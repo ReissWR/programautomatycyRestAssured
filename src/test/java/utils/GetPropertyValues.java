@@ -17,6 +17,6 @@ public class GetPropertyValues {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return key;
+        return property;
     }
 }
