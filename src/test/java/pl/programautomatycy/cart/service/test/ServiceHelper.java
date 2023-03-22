@@ -16,7 +16,7 @@ public class ServiceHelper {
     private final SampleRest SAMPLE_REST = new SampleRest();
 
 
-    public void addItem(Integer productId, Integer quantity, Boolean returnCart, String endpoint) {
+    public void addItem(int productId, int quantity, boolean returnCart, String endpoint) {
         SAMPLE_REST.response = given()
                 .auth()
                 .preemptive()
