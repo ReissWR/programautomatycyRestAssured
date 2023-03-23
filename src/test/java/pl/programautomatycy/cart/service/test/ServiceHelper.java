@@ -1,5 +1,6 @@
 package pl.programautomatycy.cart.service.test;
 
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import utils.GetPropertyValues;
 
@@ -34,6 +35,20 @@ public class ServiceHelper {
                 .preemptive()
                 .basic(LOGIN, PASSWORD)
                 .queryParams(queryParamsBody)
+                .baseUri(BASE_URI)
+                .post(endpoint);
+
+    }
+
+    public void sendPostRequest(String body, String endpoint) {
+        SAMPLE_REST.response = given()
+                .auth()
+                .preemptive()
+                .basic(LOGIN, PASSWORD)
+                .contentType(ContentType.JSON)
+                //.contentType("application/json") // alternatively
+                //.header("Content-Type", "application/json) // alternatively
+                .body(body)
                 .baseUri(BASE_URI)
                 .post(endpoint);
 
