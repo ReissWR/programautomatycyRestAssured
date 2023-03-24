@@ -51,9 +51,68 @@ public class ServiceHelper {
                 .body(body)
                 .baseUri(BASE_URI)
                 .post(endpoint);
+    }
+    public Response sendPostRequestResponsive(String body, String endpoint) {
+        SAMPLE_REST.response = given()
+                .auth()
+                .preemptive()
+                .basic(LOGIN, PASSWORD)
+                .contentType(ContentType.JSON)
+                //.contentType("application/json") // alternatively
+                //.header("Content-Type", "application/json) // alternatively
+                .body(body)
+                .baseUri(BASE_URI)
+                .post(endpoint);
 
+        return SAMPLE_REST.response;
+    }
+    public Response sendGetRequest(String endpoint) {
+        SAMPLE_REST.response = given()
+                .auth()
+                .preemptive()
+                .basic(LOGIN, PASSWORD)
+                .baseUri(BASE_URI)
+                .get(endpoint);
+
+        return SAMPLE_REST.response;
     }
 
+    public Response sendGetRequest(String body, String endpoint) {
+        SAMPLE_REST.response = given()
+                .auth()
+                .preemptive()
+                .basic(LOGIN, PASSWORD)
+                .body(body)
+                .contentType(ContentType.JSON)
+                .baseUri(BASE_URI)
+                .get(endpoint);
+
+        return SAMPLE_REST.response;
+    }
+
+    public Response sendDeleteRequest(String endpoint) {
+        SAMPLE_REST.response = given()
+                .auth()
+                .preemptive()
+                .basic(LOGIN, PASSWORD)
+                .baseUri(BASE_URI)
+                .delete(endpoint);
+
+        return SAMPLE_REST.response;
+    }
+
+    public Response sendDeleteRequest(String body, String endpoint) {
+        SAMPLE_REST.response = given()
+                .auth()
+                .preemptive()
+                .basic(LOGIN, PASSWORD)
+                .body(body)
+                .contentType(ContentType.JSON)
+                .baseUri(BASE_URI)
+                .delete(endpoint);
+
+        return SAMPLE_REST.response;
+    }
 }
 
 class SampleRest {
