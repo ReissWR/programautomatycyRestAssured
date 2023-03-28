@@ -2,6 +2,8 @@ package pl.programautomatycy.cart.service.test;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import pl.programautomatycy.cart.service.test.serialising.ActualizationItemRequestPOJO;
+import pl.programautomatycy.cart.service.test.serialising.AddItemToCartRequestPOJO;
 import utils.GetPropertyValues;
 
 import java.util.Map;
@@ -38,6 +40,17 @@ public class ServiceHelper {
                 .baseUri(BASE_URI)
                 .post(endpoint);
 
+    }
+    public Response sendPostRequestResponsive(Map<String, Object> queryParamsBody, String endpoint) {
+        SAMPLE_REST.response = given()
+                .auth()
+                .preemptive()
+                .basic(LOGIN, PASSWORD)
+                .queryParams(queryParamsBody)
+                .baseUri(BASE_URI)
+                .post(endpoint);
+
+        return SAMPLE_REST.response;
     }
 
     public void sendPostRequest(String body, String endpoint) {
@@ -110,6 +123,60 @@ public class ServiceHelper {
                 .contentType(ContentType.JSON)
                 .baseUri(BASE_URI)
                 .delete(endpoint);
+
+        return SAMPLE_REST.response;
+    }
+
+    public void sendPutRequest(String body, String endpoint) {
+        SAMPLE_REST.response = given()
+                .auth()
+                .preemptive()
+                .basic(LOGIN, PASSWORD)
+                .contentType(ContentType.JSON)
+                //.contentType("application/json") // alternatively
+                //.header("Content-Type", "application/json) // alternatively
+                .body(body)
+                .baseUri(BASE_URI)
+                .put(endpoint);
+    }
+
+    public void sendPatchRequest(String body, String endpoint) {
+        SAMPLE_REST.response = given()
+                .auth()
+                .preemptive()
+                .basic(LOGIN, PASSWORD)
+                .contentType(ContentType.JSON)
+                //.contentType("application/json") // alternatively
+                //.header("Content-Type", "application/json) // alternatively
+                .body(body)
+                .baseUri(BASE_URI)
+                .patch(endpoint);
+    }
+    public Response sendPostRequestResponsive(AddItemToCartRequestPOJO body, String endpoint) {
+        SAMPLE_REST.response = given()
+                .auth()
+                .preemptive()
+                .basic(LOGIN, PASSWORD)
+                .contentType(ContentType.JSON)
+                //.contentType("application/json") // alternatively
+                //.header("Content-Type", "application/json) // alternatively
+                .body(body)
+                .baseUri(BASE_URI)
+                .post(endpoint);
+
+        return SAMPLE_REST.response;
+    }
+    public Response sendPostRequestResponsive(ActualizationItemRequestPOJO body, String endpoint) {
+        SAMPLE_REST.response = given()
+                .auth()
+                .preemptive()
+                .basic(LOGIN, PASSWORD)
+                .contentType(ContentType.JSON)
+                //.contentType("application/json") // alternatively
+                //.header("Content-Type", "application/json) // alternatively
+                .body(body)
+                .baseUri(BASE_URI)
+                .post(endpoint);
 
         return SAMPLE_REST.response;
     }
