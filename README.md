@@ -1,13 +1,14 @@
 # programautomatycyRestAssured
+
 My first steps with RestAssured in Java, guided by programautomatycy.pl with my own additionals.
 
-Used libraries: 
+**Used libraries:** 
 Rest Assured
 JUnit
 Json
 Jackson
 
-Used tools:
+**Used tools:**
 IntelliJ
 Postman
 Swagger
